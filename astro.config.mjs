@@ -2,5 +2,9 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  vite: { plugins: [tailwindcss()] },
+  site: 'https://luis9cabrera.github.io',
+  base: '/landing-page-men-maq/',
+  vite: {
+    plugins: [tailwind()]
+  }
 });
