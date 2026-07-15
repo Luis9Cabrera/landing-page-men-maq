@@ -1,0 +1,217 @@
+---
+import Layout from '../layouts/Layout.astro';
+import s20Text from '/src/texto_extraido_s20.txt?raw';
+import s50Text from '/src/texto_extraido_s50.txt?raw';
+
+const getSummary = (rawText: string) =>
+  rawText.split('\n').map(l => l.trim()).filter(Boolean).slice(0, 8);
+
+const getPrice = (rawText: string) =>
+  rawText.match(/PRECIO DEL EQUIPO\s*([0-9,]+\sMXN)/i)?.[1] ?? 'Consultar';
+
+const getProduction = (rawText: string) =>
+  rawText.match(/([0-9]+\sA\s[0-9]+\sPIEZAS\sPOR\sDÍA)/i)?.[1] ?? 'Consultar';
+
+const s20Summary = getSummary(s20Text);
+const s50Summary = getSummary(s50Text);
+const s20Price = getPrice(s20Text);
+const s50Price = getPrice(s50Text);
+const s20Production = getProduction(s20Text);
+const s50Production = getProduction(s50Text);
+---
+
+<Layout title="Menmaq | Máquinas Bloqueras">
+  <nav class="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-primary/8">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between py-3">
+      <a href="#" class="group">
+        <img src="/logos/logo-horizontal.svg" alt="Menmaq" class="h-20 w-auto group-hover:scale-105 transition-transform duration-300" />
+      </a>
+      <ul class="flex gap-7 items-center list-none m-0 p-0">
+        <li><a href="#s-20" class="no-underline text-tertiary font-semibold text-2xl hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full">S-20</a></li>
+        <li><a href="#s-50" class="no-underline text-tertiary font-semibold text-2xl hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full">S-50</a></li>
+        <li><a href="#contacto" class="no-underline bg-secondary text-text px-5 py-2 rounded-full font-bold text-2xl hover:bg-secondary-dark hover:shadow-md hover:-translate-y-0.5 transition-all">Cotizar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <div class="max-w-6xl mx-auto px-6">
+      <section class="grid grid-cols-[1.2fr_0.8fr] gap-12 items-center py-16 max-md:grid-cols-1 max-md:py-8 max-md:gap-7">
+        <div class=" gap-1.5">
+          <p class="uppercase tracking-[.28em] text-xs font-bold text-secondary mb-2.5">Tecnología para construir más</p>
+          <h1 class="font-kenyan text-[clamp(2.4rem,4.5vw,3.8rem)] text-primary leading-tight mb-4">Máquinas bloqueras de alto rendimiento para tu negocio</h1>
+          <p class="text-lg leading-relaxed text-tertiary my-1 mb-4">Equipos robustos, eficientes y fáciles de operar para producir bloques de calidad con menor costo y mayor productividad.</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#contacto" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full no-underline font-bold text-sm bg-secondary text-text shadow-[0_8px_24px_rgba(246,185,1,0.3)] hover:bg-secondary-dark hover:-translate-y-0.5 transition-all">Cotizar ahora</a>
+            <a href="#s-20" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full no-underline font-bold text-sm bg-transparent text-primary border-2 border-primary hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all">Ver equipos</a>
+          </div>
+          <ul class="grid grid-cols-3 gap-3 list-none p-0 mt-5 max-md:grid-cols-1">
+            <li class="group bg-white border border-primary/10 rounded-2xl py-4 px-3 text-center hover:border-secondary/40 hover:shadow-md transition-all duration-300">
+              <strong class="block text-primary text-lg font-kenyan group-hover:text-secondary transition-colors duration-300">+20 años</strong>
+              <span class="text-tertiary text-xs group-hover:text-primary transition-colors duration-300">de experiencia</span>
+            </li>
+            <li class="group bg-white border border-primary/10 rounded-2xl py-4 px-3 text-center hover:border-secondary/40 hover:shadow-md transition-all duration-300">
+              <strong class="block text-primary text-lg font-kenyan group-hover:text-secondary transition-colors duration-300">98%</strong>
+              <span class="text-tertiary text-xs group-hover:text-primary transition-colors duration-300">eficiencia</span>
+            </li>
+            <li class="group bg-white border border-primary/10 rounded-2xl py-4 px-3 text-center hover:border-secondary/40 hover:shadow-md transition-all duration-300">
+              <strong class="block text-primary text-lg font-kenyan group-hover:text-secondary transition-colors duration-300">24/7</strong>
+              <span class="text-tertiary text-xs group-hover:text-primary transition-colors duration-300">soporte técnico</span>
+            </li>
+          </ul>
+        </div>
+        <div class="flex justify-center max-md:order-first">
+          <div class="group w-full max-w-[400px] overflow-hidden rounded-[28px] bg-gradient-to-br from-primary to-[#4b738d] shadow-[0_20px_50px_rgba(55,92,118,0.18)] hover:shadow-[0_30px_70px_rgba(55,92,118,0.3)] hover:-translate-y-2 transition-all duration-500">
+            <img src="/maquinas/mdhs-20.png" alt="Máquina desmolde S-20" class="w-full h-60 object-cover max-md:h-44 group-hover:scale-105 transition-transform duration-700" />
+            <div class="p-5.5 text-white grid gap-2">
+              <p class="uppercase tracking-[.28em] text-xs font-bold text-secondary mb-0 group-hover:text-white transition-colors duration-300">Modelo destacado</p>
+              <h3 class="font-kenyan text-white text-xl mb-1 group-hover:translate-x-1 transition-transform duration-300">Desmolde S-20</h3>
+              <p class="text-white/85 text-sm leading-relaxed m-0">Producción robusta, fácil operación y gran versatilidad para bloques y adoquines.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Máquina S-20 -->
+    <section id="s-20" class="machine-bg machine-bg--s20 w-full bg-white group">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-2 gap-16 items-center py-24 max-md:grid-cols-1 max-md:py-16 max-md:gap-10">
+          <div class="reveal-left">
+            <img src="/maquinas/mdhs-20.png" alt="Máquina desmolde S-20" class="w-full h-[600px] object-contain drop-shadow-2xl max-md:h-64 group-hover:scale-105 transition-transform duration-700" />
+          </div>
+          <div class="reveal-right">
+            <p class="uppercase tracking-[.28em] text-xs font-bold text-secondary mb-2 group-hover:opacity-80 transition-opacity duration-300">Económico</p>
+            <h2 class="font-kenyan text-[clamp(1.6rem,3vw,2.4rem)] text-primary leading-tight mb-3 group-hover:text-[#2a4a60] transition-colors duration-300">
+              {s20Summary[0]} {s20Summary[1]}
+            </h2>
+            <p class="text-tertiary text-base leading-relaxed mb-4 group-hover:translate-x-1 transition-transform duration-300">Equipo ideal para producción media. Incluye revolvedora, banda transportadora, 2 moldes y capacitación.</p>
+            <ul class="list-none p-0 m-0 grid gap-1.5 mb-6">
+              {s20Summary.slice(2, 8).map((item, i) => (
+                <li class="text-sm text-tertiary pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-secondary before:font-bold group-hover:translate-x-0.5 transition-transform duration-300" style={`transition-delay: ${i * 50}ms`}>{item}</li>
+              ))}
+            </ul>
+            <div class="flex items-center justify-between pt-3.5 border-t border-black/10 max-md:flex-col max-md:items-start max-md:gap-1.5 group-hover:border-secondary/30 transition-colors duration-300">
+              <span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors duration-300">{s20Price}</span>
+              <span class="text-sm text-tertiary group-hover:opacity-80 transition-opacity duration-300"><strong class="text-primary group-hover:text-secondary transition-colors duration-300">Producción:</strong> {s20Production}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Máquina S-50 -->
+    <section id="s-50" class="machine-bg machine-bg--s50 w-full bg-bg group">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-2 gap-16 items-center py-24 max-md:grid-cols-1 max-md:py-16 max-md:gap-10">
+          <div class="reveal-left order-2 max-md:order-1">
+            <p class="uppercase tracking-[.28em] text-xs font-bold text-secondary mb-2 group-hover:opacity-80 transition-opacity duration-300">Alta producción</p>
+            <h2 class="font-kenyan text-[clamp(1.6rem,3vw,2.4rem)] text-primary leading-tight mb-3 group-hover:text-[#2a4a60] transition-colors duration-300">
+              {s50Summary[0]} {s50Summary[1]}
+            </h2>
+            <p class="text-tertiary text-base leading-relaxed mb-4 group-hover:translate-x-1 transition-transform duration-300">Sistema hidráulico de alta capacidad. Produce hasta 4000 piezas por día con revolvedora de 700 litros.</p>
+            <ul class="list-none p-0 m-0 grid gap-1.5 mb-6">
+              {s50Summary.slice(2, 8).map((item, i) => (
+                <li class="text-sm text-tertiary pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-secondary before:font-bold group-hover:translate-x-0.5 transition-transform duration-300" style={`transition-delay: ${i * 50}ms`}>{item}</li>
+              ))}
+            </ul>
+            <div class="flex items-center justify-between pt-3.5 border-t border-black/10 max-md:flex-col max-md:items-start max-md:gap-1.5 group-hover:border-secondary/30 transition-colors duration-300">
+              <span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors duration-300">{s50Price}</span>
+              <span class="text-sm text-tertiary group-hover:opacity-80 transition-opacity duration-300"><strong class="text-primary group-hover:text-secondary transition-colors duration-300">Producción:</strong> {s50Production}</span>
+            </div>
+          </div>
+          <div class="reveal-right order-1 max-md:order-2">
+            <img src="/maquinas/mdhs-50.png" alt="Máquina hidráulica S-50" class="w-full h-[600px] object-contain drop-shadow-2xl max-md:h-64 group-hover:scale-105 transition-transform duration-700" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="w-full py-16 max-md:py-10">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-[1.2fr_0.8fr] gap-10 items-center max-md:grid-cols-1">
+          <div class="reveal">
+            <p class="uppercase tracking-[.28em] text-xs font-bold text-secondary mb-2.5">Por qué elegir Menmaq</p>
+            <h2 class="font-kenyan text-[clamp(1.6rem,3vw,2.4rem)] text-primary leading-tight mb-3">Durabilidad, precisión y respaldo técnico</h2>
+            <p class="text-base leading-relaxed text-tertiary mb-6">Nuestros sistemas combinan ingeniería sólida con componentes confiables para asegurar una producción constante y resultados consistentes. Cada equipo está respaldado por más de 20 años de experiencia en el sector.</p>
+            <div class="flex flex-wrap gap-2.5">
+              {['Resistencia','Alta capacidad','Control preciso','Instalación rápida','Capacitación incluida','Soporte 24/7'].map(pill => (
+                <span class="bg-primary/8 text-primary px-4.5 py-2.5 rounded-full font-semibold text-sm">{pill}</span>
+              ))}
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 max-md:order-first">
+            {[
+              { icon: '⚙️', title: 'Ingeniería propia', desc: 'Diseño y fabricación con estándares de calidad' },
+              { icon: '🔧', title: 'Refacciones', desc: 'Inventario permanente de partes y componentes' },
+              { icon: '🎓', title: 'Capacitación', desc: 'Entrenamiento completo para tu equipo' },
+              { icon: '📦', title: 'Instalación', desc: 'Montaje y puesta en marcha incluidos' },
+            ].map(f => (
+              <div class="group bg-white rounded-2xl p-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-black/10 hover:shadow-lg hover:border-secondary/30 hover:-translate-y-1 transition-all duration-300">
+                <div class="text-3xl mb-2 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">{f.icon}</div>
+                <h4 class="font-kenyan text-primary text-lg mb-1 group-hover:text-secondary transition-colors duration-300">{f.title}</h4>
+                <p class="text-xs text-tertiary m-0 group-hover:text-primary transition-colors duration-300">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="max-w-6xl mx-auto px-6">
+      <section id="contacto" class="group bg-gradient-to-br from-primary to-[#4d799d] rounded-[28px] py-14 px-10 text-center relative overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_30%_50%,rgba(246,185,1,0.08),transparent_60%)] hover:shadow-2xl hover:shadow-primary/30 transition-shadow duration-500">
+        <h2 class="font-kenyan text-[clamp(1.6rem,3vw,2.4rem)] text-white mb-2 relative group-hover:scale-[1.02] transition-transform duration-500">Listo para llevar tu producción al siguiente nivel</h2>
+        <p class="text-white/85 text-base mb-6 relative">Habla con nuestro equipo y recibe una propuesta adaptada a tus necesidades.</p>
+        <a href="mailto:ventas@menmaq.com" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full no-underline font-bold text-sm bg-white text-primary shadow-[0_8px_24px_rgba(0,0,0,0.15)] hover:bg-secondary hover:text-text hover:-translate-y-0.5 transition-all relative">Escríbenos</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-primary-dark text-white/80 py-12 pb-8 mt-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-[2fr_1fr_1fr] gap-10 mb-8 max-md:grid-cols-1">
+        <div>
+          <img src="/logos/log-bc.svg" alt="Menmaq" class="h-20 w-auto mb-3" />
+          <p class="text-sm leading-relaxed max-w-xs m-0">Fabricantes de maquinaria bloquera con más de 20 años de experiencia. Soluciones confiables para la industria de la construcción.</p>
+        </div>
+        <div>
+          <h4 class="font-kenyan text-white text-base mb-3">Enlaces</h4>
+          <ul class="list-none p-0 m-0 grid gap-2">
+            <li><a href="#s-20" class="text-white/70 no-underline text-sm hover:text-secondary transition-colors">S-20</a></li>
+            <li><a href="#s-50" class="text-white/70 no-underline text-sm hover:text-secondary transition-colors">S-50</a></li>
+            <li><a href="#nosotros" class="text-white/70 no-underline text-sm hover:text-secondary transition-colors">Nosotros</a></li>
+            <li><a href="#contacto" class="text-white/70 no-underline text-sm hover:text-secondary transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-kenyan text-white text-base mb-3">Contacto</h4>
+          <ul class="list-none p-0 m-0 grid gap-2">
+            <li><a href="mailto:ventas@menmaq.com" class="text-white/70 no-underline text-sm hover:text-secondary transition-colors">ventas@menmaq.com</a></li>
+            <li><a href="tel:+524441234567" class="text-white/70 no-underline text-sm hover:text-secondary transition-colors">+52 444 123 4567</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex justify-between items-center pt-5 border-t border-white/10 text-xs text-white/50 max-md:flex-col max-md:gap-2 max-md:text-center">
+        <span>&copy; {new Date().getFullYear()} Menmaq. Todos los derechos reservados.</span>
+        <span>Máquinas bloqueras &mdash; Hecho en México</span>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  });
+</script>

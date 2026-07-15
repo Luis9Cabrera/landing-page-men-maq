@@ -1,0 +1,33 @@
+# Dependencias
+node_modules/
+
+# Build de Astro
+/dist/
+.astro/
+
+# Caché y artefactos de Vite
+.vite/
+.cache/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archivos temporales
+*.tmp
+*.temp

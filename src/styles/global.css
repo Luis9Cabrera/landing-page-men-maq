@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'KenyanCoffee';
+  src: url('/fuentes/kenyan coffee rg.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KenyanCoffee';
+  src: url('/fuentes/kenyan coffee bd.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #375c76;
+  --color-primary-dark: #1e3d52;
+  --color-secondary: #f6b901;
+  --color-secondary-dark: #d49e00;
+  --color-tertiary: #555;
+  --color-bg: #f7f8fa;
+  --color-text: #14212d;
+  --font-kenyan: 'KenyanCoffee', 'Segoe UI', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Dynamic background patterns */
+.machine-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.machine-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.machine-bg--s20::before {
+  background:
+    linear-gradient(135deg, rgba(55,92,118,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(246,185,1,0.06) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(55,92,118,0.02) 20px,
+      rgba(55,92,118,0.02) 21px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(55,92,118,0.015) 40px,
+      rgba(55,92,118,0.015) 41px
+    );
+}
+
+.machine-bg--s50::before {
+  background:
+    linear-gradient(225deg, rgba(246,185,1,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(55,92,118,0.06) 0%, transparent 50%),
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 25px,
+      rgba(246,185,1,0.03) 25px,
+      rgba(246,185,1,0.03) 26px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(55,92,118,0.015) 35px,
+      rgba(55,92,118,0.015) 36px
+    );
+}
+
+/* Decorative circles */
+.machine-bg::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  opacity: 0.05;
+}
+
+.machine-bg--s20::after {
+  width: 400px;
+  height: 400px;
+  background: var(--color-primary);
+  top: -100px;
+  right: -100px;
+  box-shadow:
+    0 0 0 60px rgba(55,92,118,0.03),
+    120px 200px 0 -40px rgba(246,185,1,0.04);
+}
+
+.machine-bg--s50::after {
+  width: 350px;
+  height: 350px;
+  background: var(--color-secondary);
+  bottom: -80px;
+  left: -80px;
+  box-shadow:
+    0 0 0 50px rgba(246,185,1,0.03),
+    -100px -150px 0 -30px rgba(55,92,118,0.04);
+}
+
+.machine-bg > * {
+  position: relative;
+  z-index: 1;
+}
